@@ -1,3 +1,6 @@
+# This Fork
+The original library from Francisco Escher has the OpenAI endpoints hard-coded as constants.  This fork will add an alternate completion call that allows you to specify any server endpoint that mimics that the OpenAI API, e.g. the llama.cpp server interface.
+
 # Go OpenAI
 
 This is a Go client library for the OpenAI API.
