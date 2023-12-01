@@ -1,4 +1,4 @@
-module github.com/Michael-F-Ellis/goopenai/v1
+module github.com/Michael-F-Ellis/goopenai
 
 go 1.21
 

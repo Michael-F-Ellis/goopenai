@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/franciscoescher/goopenai/v3"
+	"github.com/Michael-F-Ellis/goopenai"
 )
 
 func main() {
