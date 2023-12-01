@@ -46,7 +46,7 @@ func Test_CreateChatCompletions_OK(t *testing.T) {
 	expectedHttpResponse := &http.Response{Status: "200 OK", Body: responseBody, StatusCode: 200}
 	mocked.HttpClient.EXPECT().Do(newRequestMatcher(mocked.Request)).Return(expectedHttpResponse, nil)
 
-	response, err := mocked.Client.CreateChatCompletions(ctx, b)
+	response, err := mocked.Client.CreateChatCompletions(ctx, b, "")
 
 	// asserts
 	require.NoError(t, err)
@@ -93,7 +93,7 @@ func Test_CreateChatCompletions_Error(t *testing.T) {
 	expectedHttpResponse := &http.Response{Status: "500 OK", StatusCode: 200, Body: responseBody}
 	mocked.HttpClient.EXPECT().Do(newRequestMatcher(mocked.Request)).Return(expectedHttpResponse, nil)
 
-	response, err := mocked.Client.CreateChatCompletions(ctx, &b)
+	response, err := mocked.Client.CreateChatCompletions(ctx, &b, "")
 
 	// asserts
 	require.Error(t, err)
@@ -128,7 +128,7 @@ func Test_CreateChatCompletions_Failure(t *testing.T) {
 
 	mocked.HttpClient.EXPECT().Do(newRequestMatcher(mocked.Request)).Return(nil, errors.New("error"))
 
-	response, err := mocked.Client.CreateChatCompletions(ctx, &b)
+	response, err := mocked.Client.CreateChatCompletions(ctx, &b, "")
 
 	// asserts
 	require.Error(t, err)

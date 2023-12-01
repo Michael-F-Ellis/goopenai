@@ -97,12 +97,20 @@ type CreateChatCompletionsUsave struct {
 	TotalTokens      int `json:"total_tokens,omitempty"`
 }
 
-func (c *Client) CreateChatCompletionsRaw(ctx context.Context, r *CreateChatCompletionsRequest) ([]byte, error) {
-	return c.Post(ctx, completionsUrl, r)
+// CreateChatCompletionsRaw creates a new completion. To use the OpenAI Chat
+// API, pass "" as the url. Otherwise pass a valide endpoint for any server that
+// mimics the API.
+func (c *Client) CreateChatCompletionsRaw(ctx context.Context, r *CreateChatCompletionsRequest, url string) ([]byte, error) {
+	if url == "" {
+		return c.Post(ctx, completionsUrl, r)
+	}
+	// else
+	return c.Post(ctx, url, r)
+
 }
 
-func (c *Client) CreateChatCompletions(ctx context.Context, r *CreateChatCompletionsRequest) (response *CreateChatCompletionsResponse, err error) {
-	raw, err := c.CreateChatCompletionsRaw(ctx, r)
+func (c *Client) CreateChatCompletions(ctx context.Context, r *CreateChatCompletionsRequest, url string) (response *CreateChatCompletionsResponse, err error) {
+	raw, err := c.CreateChatCompletionsRaw(ctx, r, url)
 	if err != nil {
 		return nil, err
 	}

@@ -12,7 +12,7 @@ type ClientInterface interface {
 	RetrieveModel(ctx context.Context, id string) (response *RetrieveModelResponse, err error)
 
 	// CreateChatCompletions Creates a completion for the provided prompt and parameters
-	CreateChatCompletions(ctx context.Context, r *CreateChatCompletionsRequest) (response *CreateChatCompletionsResponse, err error)
+	CreateChatCompletions(ctx context.Context, r *CreateChatCompletionsRequest, url string) (response *CreateChatCompletionsResponse, err error)
 
 	// CreateEdits Creates a new edit for the provided input, instruction, and parameters.
 	CreateEdits(ctx context.Context, r *CreateEditsRequest) (response *CreateEditsResponse, err error)
