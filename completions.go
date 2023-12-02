@@ -22,7 +22,9 @@ type CreateChatCompletionsRequest struct {
 	Tools            []Tools           `json:"tools,omitempty"`
 	ToolChoice       *ToolChoice       `json:"tool_choice,omitempty"`
 	User             *string           `json:"user,omitempty"`
-	CachePrompt      *bool             `json:"cache_prompt,omitempty"` // default: false, intended for llama.cpp API
+	// The following fields are specific to the llama.cpp API and should be left empty for the OpenAI Chat API.
+	CachePrompt *bool `json:"cache_prompt,omitempty"` // default: false, pass true to request caching.
+	SlotId      *int  `json:"slot_id,omitempty"`      // default: 0, pass a specific slot id to use a cached prompt.
 
 	// FunctionCall is deprecated in favor of Tools
 	FunctionCall *string `json:"function_call,omitempty"`
