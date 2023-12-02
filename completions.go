@@ -22,6 +22,7 @@ type CreateChatCompletionsRequest struct {
 	Tools            []Tools           `json:"tools,omitempty"`
 	ToolChoice       *ToolChoice       `json:"tool_choice,omitempty"`
 	User             *string           `json:"user,omitempty"`
+	CachePrompt      *bool             `json:"cache_prompt,omitempty"` // default: false, intended for llama.cpp API
 
 	// FunctionCall is deprecated in favor of Tools
 	FunctionCall *string `json:"function_call,omitempty"`
